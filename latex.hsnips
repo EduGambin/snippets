@@ -1,47 +1,47 @@
-########################################## REGLAS BÁSICAS ##########################################
+####################################################################################################
+#                                                                                                  #
+#                                          REGLAS BÁSICAS                                          #
+#                                                                                                  #
+####################################################################################################
 
-snippet doc "Crea un nuevo documento con estructura estándar"
-\documentclass[spanish]{${1:book}}
+snippet doc "Crea un nuevo documento utilizando las opciones habituales."
+\documentclass[spanish]{${1:article}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Paquetes que se van a utilizar %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[a4paper, margin=2.5cm]{geometry}	% Tamaño de página y márgenes.
-\setlength{\parindent}{0cm}					% Tabulación de párragrafo.
-\setlength{\parskip}{\bigskipamount}		% Espacio entre párrafos.
-
-\usepackage{tcolorbox}	% Marcos de color elaborados.
-
-\usepackage{amsmath}	% Matemáticas.
-
-\usepackage{amsthm}									% Definición de entornos de teoremas y demás.
-\theoremstyle{definition}
-	\newtheorem{definition}{Definición}[chapter]	% Definición numerada por capítulo.
-\theoremstyle{plain}
-	\newtheorem{theorem}{Teorema}[chapter]			% Teorema numerado por capítulo.
-	\newtheorem{proposition}{Proposición}[chapter]	% Proposición numerado por capítulo.
-	\newtheorem{lemma}{Lema}[chapter]				% Lema numerado por capítulo.
-	\newtheorem{corollary}{Corolario}[chapter]		% Corolario numerado por capítulo.
-
-\usepackage{amsfonts}	% Letras caligráficas, de pizarra, góticas, etc.
-
-\usepackage{babel}		% Traducción de nombres de secciones y mas.
+\usepackage[a4paper, margin=2.5cm]{geometry}				% Tamaño de página y márgenes.
+    \setlength{\parindent}{0cm}								% Tabulación de parrafo.
+    \setlength{\parskip}{\bigskipamount}					% Espacio entre párrafos.
+\usepackage{tcolorbox}										% Marcos de color elaborados.
+\usepackage{amsmath}										% Matemáticas.
+\usepackage{amsthm}											% Definición de entornos de teoremas y demás.
+    \theoremstyle{definition}								% Activa el estilo "definición".
+        \newtheorem{definition}{Definición}[${2:section}]	% Definición numerada por capítulo.
+        \newtheorem{exercise}{Ejercicio}[${2:section}]		% Ejercicio numerado por capítulo.
+    \theoremstyle{plain}									% Activa el estilo "plano".
+        \newtheorem{theorem}{Teorema}[${2:section}]			% Teorema numerado por capítulo.
+        \newtheorem{proposition}{Proposición}[${2:section}]	% Proposición numerado por capítulo.
+        \newtheorem{lemma}{Lema}[${2:section}]				% Lema numerado por capítulo.
+        \newtheorem{corollary}{Corolario}[${2:section}]		% Corolario numerado por capítulo.
+\usepackage{amsfonts}										% Letras caligráficas, de pizarra, góticas, etc.
+\usepackage{babel}											% Traducción de nombres de secciones y mas.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Fuente %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Tipografías del documento %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Opciones %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\date{$2}
+\date{$3}	% Dejar vacío si no se quiere poner la fecha.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Cuerpo del documento %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\title{$3}
+\title{$4}
 \author{Eduardo Gambín Monserrat}
 \maketitle
 
@@ -56,7 +56,11 @@ endsnippet
 
 
 
-####################################### CREACIÓN DE ENTORNOS #######################################
+####################################################################################################
+#                                                                                                  #
+#                                 ENTORNOS, TEOREMAS Y ESAS COSAS                                  #
+#                                                                                                  #
+####################################################################################################
 
 snippet beg "Inserta un nuevo entorno" b
 \begin{$1}
@@ -68,8 +72,28 @@ snippet beg "Inserta un nuevo entorno" b
 $0
 endsnippet
 
+snippet itemize "Inserta un nuevo entorno de puntos" b
+\begin{itemize}
+
+    \item $1
+
+\end{itemize}
+
+$0
+endsnippet
+
+snippet enum "Inserta un nuevo entorno enumerado" b
+\begin{enumerate}
+
+    \item $1
+
+\end{enumerate}
+
+$0
+endsnippet
+
 snippet chptr "Inserta un capítulo nuevo" b
-\chapter{$1}
+\section{$1}
 
 $0
 endsnippet
@@ -94,6 +118,16 @@ snippet def "Inserta una nueva definición" b
 
     \end{definition}
 \end{tcolorbox}
+
+$0
+endsnippet
+
+snippet exer "Inserta un nuevo ejercicio" b
+\begin{exercise}
+
+    $1
+
+\end{exercise}
 
 $0
 endsnippet
@@ -160,7 +194,11 @@ endsnippet
 
 
 
-########################################### MATEMÁTICAS ############################################
+####################################################################################################
+#                                                                                                  #
+#                                           MATEMÁTICAS                                            #
+#                                                                                                  #
+####################################################################################################
 
 snippet MM "Inserta una ecuación presentada" A
 \[ $1 \] $0
@@ -204,7 +242,7 @@ snippet `^.*\)/` "Fraction with ()" A
     let i = str.length - 1;
 
     while (true)
-	{
+    {
         if (str[i] == ')') depth += 1;
         if (str[i] == '(') depth -= 1;
         if (depth == 0) break;
@@ -221,11 +259,27 @@ endsnippet
 
 
 
-############################################## OTROS ###############################################
+####################################################################################################
+#                                                                                                  #
+#                                           OTRAS COSAS                                            #
+#                                                                                                  #
+####################################################################################################
 
 snippet today "Insertar la fecha de hoy"
 ``
-	var today = new Date();
-	rv = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+    var today = new Date();
+    rv = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
 ``
+endsnippet
+
+snippet bf "Pone el texto en modo negrita"
+\textbf{$1} $0
+endsnippet
+
+snippet ef "Pone el texto en modo énfasis"
+\emph{$1} $0
+endsnippet
+
+snippet " "Introduce unas dobles comillas" A
+`` rv = "\`\`$1\'\'" `` $0
 endsnippet
