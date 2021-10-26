@@ -10,22 +10,22 @@ snippet doc "Crea un nuevo documento utilizando las opciones habituales."
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Paquetes que se van a utilizar %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[a4paper, margin=2.5cm]{geometry}				% Tamaño de página y márgenes.
-    \setlength{\parindent}{0cm}								% Tabulación de parrafo.
-    \setlength{\parskip}{\bigskipamount}					% Espacio entre párrafos.
-\usepackage{tcolorbox}										% Marcos de color elaborados.
-\usepackage{amsmath}										% Matemáticas.
-\usepackage{amsthm}											% Definición de entornos de teoremas y demás.
-    \theoremstyle{definition}								% Activa el estilo "definición".
-        \newtheorem{definition}{Definición}[${2:section}]	% Definición numerada por capítulo.
-        \newtheorem{exercise}{Ejercicio}[${2:section}]		% Ejercicio numerado por capítulo.
-    \theoremstyle{plain}									% Activa el estilo "plano".
-        \newtheorem{theorem}{Teorema}[${2:section}]			% Teorema numerado por capítulo.
-        \newtheorem{proposition}{Proposición}[${2:section}]	% Proposición numerado por capítulo.
-        \newtheorem{lemma}{Lema}[${2:section}]				% Lema numerado por capítulo.
-        \newtheorem{corollary}{Corolario}[${2:section}]		% Corolario numerado por capítulo.
-\usepackage{amsfonts}										% Letras caligráficas, de pizarra, góticas, etc.
-\usepackage{babel}											% Traducción de nombres de secciones y mas.
+\usepackage[a4paper, margin=2.5cm]{geometry}                % Tamaño de página y márgenes.
+    \setlength{\parindent}{0cm}                             % Tabulación de parrafo.
+    \setlength{\parskip}{\bigskipamount}                    % Espacio entre párrafos.
+\usepackage{tcolorbox}                                      % Marcos de color elaborados.
+\usepackage{amsmath}                                        % Matemáticas.
+\usepackage{amsthm}                                         % Definición de entornos de teoremas y demás.
+    \theoremstyle{definition}                               % Activa el estilo "definición".
+        \newtheorem{definition}{Definición}[${2:section}]   % Definición numerada por capítulo.
+        \newtheorem{exercise}{Ejercicio}[${2:section}]      % Ejercicio numerado por capítulo.
+    \theoremstyle{plain}                                    % Activa el estilo "plano".
+        \newtheorem{theorem}{Teorema}[${2:section}]         % Teorema numerado por capítulo.
+        \newtheorem{proposition}{Proposición}[${2:section}] % Proposición numerado por capítulo.
+        \newtheorem{lemma}{Lema}[${2:section}]              % Lema numerado por capítulo.
+        \newtheorem{corollary}{Corolario}[${2:section}]     % Corolario numerado por capítulo.
+\usepackage{amsfonts}                                       % Letras caligráficas, de pizarra, góticas, etc.
+\usepackage{babel}                                          % Traducción de nombres de secciones y mas.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Tipografías del documento %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,7 +35,7 @@ snippet doc "Crea un nuevo documento utilizando las opciones habituales."
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Opciones %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\date{$3}	% Dejar vacío si no se quiere poner la fecha.
+\date{$3}    % Dejar vacío si no se quiere poner la fecha.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Cuerpo del documento %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
