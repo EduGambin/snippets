@@ -1,0 +1,231 @@
+########################################## REGLAS BÁSICAS ##########################################
+
+snippet doc "Crea un nuevo documento con estructura estándar"
+\documentclass[spanish]{${1:book}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Paquetes que se van a utilizar %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[a4paper, margin=2.5cm]{geometry}	% Tamaño de página y márgenes.
+\setlength{\parindent}{0cm}					% Tabulación de párragrafo.
+\setlength{\parskip}{\bigskipamount}		% Espacio entre párrafos.
+
+\usepackage{tcolorbox}	% Marcos de color elaborados.
+
+\usepackage{amsmath}	% Matemáticas.
+
+\usepackage{amsthm}									% Definición de entornos de teoremas y demás.
+\theoremstyle{definition}
+	\newtheorem{definition}{Definición}[chapter]	% Definición numerada por capítulo.
+\theoremstyle{plain}
+	\newtheorem{theorem}{Teorema}[chapter]			% Teorema numerado por capítulo.
+	\newtheorem{proposition}{Proposición}[chapter]	% Proposición numerado por capítulo.
+	\newtheorem{lemma}{Lema}[chapter]				% Lema numerado por capítulo.
+	\newtheorem{corollary}{Corolario}[chapter]		% Corolario numerado por capítulo.
+
+\usepackage{amsfonts}	% Letras caligráficas, de pizarra, góticas, etc.
+
+\usepackage{babel}		% Traducción de nombres de secciones y mas.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Fuente %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Opciones %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\date{$2}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Cuerpo del documento %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{$3}
+\author{Eduardo Gambín Monserrat}
+\maketitle
+
+\tableofcontents
+
+$0
+
+\end{document}
+endsnippet
+
+
+
+
+
+####################################### CREACIÓN DE ENTORNOS #######################################
+
+snippet beg "Inserta un nuevo entorno" b
+\begin{$1}
+
+    $2
+
+\end{$1}
+
+$0
+endsnippet
+
+snippet chptr "Inserta un capítulo nuevo" b
+\chapter{$1}
+
+$0
+endsnippet
+
+snippet sect "Inserta una sección nueva" b
+\section{$1}
+
+$0
+endsnippet
+
+snippet subsect "Inserta una subsección nueva" b
+\subsection{$1}
+
+$0
+endsnippet
+
+snippet def "Inserta una nueva definición" b
+\begin{tcolorbox}
+    \begin{definition}
+
+        $1
+
+    \end{definition}
+\end{tcolorbox}
+
+$0
+endsnippet
+
+snippet thm "Inserta un nuevo teorema" b
+\begin{tcolorbox}
+    \begin{theorem}$1
+
+        $2
+
+    \end{theorem}
+\end{tcolorbox}
+
+$0
+endsnippet
+
+snippet prop "Inserta una nueva proposición" b
+\begin{tcolorbox}
+    \begin{proposition}
+
+        $1
+
+    \end{proposition}
+\end{tcolorbox}
+
+$0
+endsnippet
+
+snippet cor "Inserta un nuevo corolario" b
+\begin{tcolorbox}
+    \begin{corollary}
+
+        $1
+
+    \end{corollary}
+\end{tcolorbox}
+
+$0
+endsnippet
+
+snippet lemma "Inserta un nuevo lema" b
+\begin{tcolorbox}
+    \begin{lemma}
+
+        $1
+
+    \end{lemma}
+\end{tcolorbox}
+
+$0
+endsnippet
+
+snippet proof "Inserta una nueva demostración" b
+\begin{proof}
+
+    $1
+
+\end{proof}
+
+$0
+endsnippet
+
+
+
+
+
+########################################### MATEMÁTICAS ############################################
+
+snippet MM "Inserta una ecuación presentada" A
+\[ $1 \] $0
+endsnippet
+
+snippet mm "Inserta ecuación en línea" A
+\( $1 \) $0
+endsnippet
+
+snippet inn "Inserta un símbolo de pertenencia" Ai
+\in
+endsnippet
+
+snippet RR "Inserta el conjunto de los números reales" Ai
+\mathbb{R}
+endsnippet
+
+snippet // "Fracción simple" A
+\frac{$1}{$2}$0
+endsnippet
+
+snippet srs "Inserta una muestra aleatoria simple" Ai
+\vec{X}=\left(X_1,\dots,X_n\right)
+endsnippet
+
+snippet `va([A-Z]+)` "Inserta una variable aleatoria"
+variable aleatoria \( ``rv = m[1]`` \) 
+endsnippet
+
+snippet `((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/` "Fraction no ()" A
+\frac{``rv = m[1]``}{$1}$0
+endsnippet
+
+snippet `^.*\)/` "Fraction with ()" A
+``
+    let str = m[0];
+    str = str.slice(0, -1);
+    let lastIndex = str.length - 1;
+
+    let depth = 0;
+    let i = str.length - 1;
+
+    while (true)
+	{
+        if (str[i] == ')') depth += 1;
+        if (str[i] == '(') depth -= 1;
+        if (depth == 0) break;
+        i -= 1;
+    }
+
+    let results = str.slice(0, i) + "\\frac{" + str.slice(i+1, -1) + "}";
+    results += "{$1}$0";
+    rv = results;
+``
+endsnippet
+
+
+
+
+
+############################################## OTROS ###############################################
+
+snippet today "Insertar la fecha de hoy"
+``
+	var today = new Date();
+	rv = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+``
+endsnippet
