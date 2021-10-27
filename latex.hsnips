@@ -1,5 +1,36 @@
 ####################################################################################################
 #                                                                                                  #
+#                                            CONTEXTOS                                             #
+#                                                                                                  #
+####################################################################################################
+
+global "Contexto del modo matemático."
+function math(context)
+{
+    return context.scopes.some(s=>s.startsWith("meta.math"));
+}
+endglobal
+
+global "Contexto del NO modo matemático."
+function not_math(context)
+{
+    return !context.scopes.some(s=>s.startsWith("meta.math"));
+}
+endglobal
+
+global "Contexto del modo lista (enumerado, descripción, etc)."
+function list(context)
+{
+    return context.scopes.some(s=> s === "meta.function.environment.list.latex");
+}
+endglobal
+
+
+
+
+
+####################################################################################################
+#                                                                                                  #
 #                                          REGLAS BÁSICAS                                          #
 #                                                                                                  #
 ####################################################################################################
@@ -42,7 +73,7 @@ snippet doc "Crea un nuevo documento utilizando las opciones habituales."
 
 \begin{document}
 \title{$4}
-\author{Eduardo Gambín Monserrat}
+\author{$5}
 \maketitle
 
 \tableofcontents
@@ -62,7 +93,7 @@ endsnippet
 #                                                                                                  #
 ####################################################################################################
 
-snippet beg "Inserta un nuevo entorno" b
+snippet beg "Inserta un nuevo entorno." bwA
 \begin{$1}
 
     $2
@@ -72,121 +103,77 @@ snippet beg "Inserta un nuevo entorno" b
 $0
 endsnippet
 
-snippet itemize "Inserta un nuevo entorno de puntos" b
-\begin{itemize}
+$0
+endsnippet
 
-    \item $1
-
-\end{itemize}
+snippet chap "Inserta un capítulo nuevo." bA
+\chapter{$1}
 
 $0
 endsnippet
 
-snippet enum "Inserta un nuevo entorno enumerado" b
-\begin{enumerate}
-
-    \item $1
-
-\end{enumerate}
-
-$0
-endsnippet
-
-snippet chptr "Inserta un capítulo nuevo" b
+snippet sect "Inserta una sección nueva." bwA
 \section{$1}
 
 $0
 endsnippet
 
-snippet sect "Inserta una sección nueva" b
-\section{$1}
-
-$0
-endsnippet
-
-snippet subsect "Inserta una subsección nueva" b
+snippet ssect "Inserta una subsección nueva." bA
 \subsection{$1}
 
 $0
 endsnippet
 
-snippet def "Inserta una nueva definición" b
+snippet bbeg "Inserta un nuevo entorno dentro de una caja." bA
 \begin{tcolorbox}
-    \begin{definition}
-
-        $1
-
-    \end{definition}
-\end{tcolorbox}
-
-$0
-endsnippet
-
-snippet exer "Inserta un nuevo ejercicio" b
-\begin{exercise}
-
-    $1
-
-\end{exercise}
-
-$0
-endsnippet
-
-snippet thm "Inserta un nuevo teorema" b
-\begin{tcolorbox}
-    \begin{theorem}$1
+    \begin{$1}
 
         $2
 
-    \end{theorem}
+    \end{$1}
 \end{tcolorbox}
 
 $0
 endsnippet
 
-snippet prop "Inserta una nueva proposición" b
-\begin{tcolorbox}
-    \begin{proposition}
 
-        $1
 
-    \end{proposition}
-\end{tcolorbox}
 
-$0
+
+
+
+
+
+
+#################################### MATEMÁTICAS Y RELACIONADOS ####################################
+
+# Entornos matemáticos y sus derivados
+
+snippet mm "Inserta ecuación en línea." A
+\( $1\)$0
 endsnippet
 
-snippet cor "Inserta un nuevo corolario" b
-\begin{tcolorbox}
-    \begin{corollary}
+snippet MM "Inserta una ecuación presentada." wA
 
-        $1
-
-    \end{corollary}
-\end{tcolorbox}
-
-$0
-endsnippet
-
-snippet lemma "Inserta un nuevo lema" b
-\begin{tcolorbox}
-    \begin{lemma}
-
-        $1
-
-    \end{lemma}
-\end{tcolorbox}
-
-$0
-endsnippet
-
-snippet proof "Inserta una nueva demostración" b
-\begin{proof}
-
+\[
     $1
+\]
+$0
+endsnippet
 
-\end{proof}
+snippet aMM "Inserta una ecuación presentada y alineada." A
 
+\begin{align*}
+    $1
+\end{align*}
+$0
+endsnippet
+
+snippet mMM "Inserta una ecuación presentada y multilínea." A
+
+\begin{multline*}
+    $1
+\end{multline*}
 $0
 endsnippet
 
@@ -194,68 +181,136 @@ endsnippet
 
 
 
-####################################################################################################
-#                                                                                                  #
-#                                           MATEMÁTICAS                                            #
-#                                                                                                  #
-####################################################################################################
+# Conjuntos populares
 
-snippet MM "Inserta una ecuación presentada" A
-\[ $1 \] $0
+context math(context)
+snippet NN "Inserta el conjunto de los números naturales" A
+\mathbb{N} 
 endsnippet
 
-snippet mm "Inserta ecuación en línea" A
-\( $1 \) $0
+context math(context)
+snippet ZZ "Inserta el conjunto de los números enteros" A
+\mathbb{Z} 
 endsnippet
 
-snippet inn "Inserta un símbolo de pertenencia" Ai
-\in
+context math(context)
+snippet QQ "Inserta el conjunto de los números racionales." A
+\mathbb{Q} 
 endsnippet
 
-snippet RR "Inserta el conjunto de los números reales" Ai
-\mathbb{R}
+context math(context)
+snippet RR "Inserta el conjunto de los números reales." A
+\mathbb{R} 
 endsnippet
 
+context math(context)
+snippet CC "Inserta el conjunto de los números complejos." A
+\mathbb{C} 
+endsnippet
+
+context math(context)
+snippet OO "Inserta el conjunto Omega." A
+\Omega 
+endsnippet
+
+
+
+
+
+# Símbolos
+
+context math(context)
+snippet inn "Símbolo de pertenencia" Ai
+ \in 
+endsnippet
+
+context math(context)
 snippet // "Fracción simple" A
-\frac{$1}{$2}$0
+\frac{$1}{$2} $0
 endsnippet
 
-snippet srs "Inserta una muestra aleatoria simple" Ai
-\vec{X}=\left(X_1,\dots,X_n\right)
+context math(context)
+snippet srs "Muestra aleatoria simple" Aw
+\vec{X} = \left( X_1, \dots, X_n \right) $0
 endsnippet
 
-snippet `va([A-Z]+)` "Inserta una variable aleatoria"
-variable aleatoria \( ``rv = m[1]`` \) 
+context math(context)
+snippet to "Flecha ->" Ai
+ \to 
 endsnippet
 
-snippet `((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/` "Fraction no ()" A
-\frac{``rv = m[1]``}{$1}$0
+context math(context)
+snippet cc "Subconjunto o igual" Ai
+ \subseteq 
 endsnippet
 
-snippet `^.*\)/` "Fraction with ()" A
-``
-    let str = m[0];
-    str = str.slice(0, -1);
-    let lastIndex = str.length - 1;
+context math(context)
+snippet maps "Aplicación" Ai
+ \mapsto 
+endsnippet
 
-    let depth = 0;
-    let i = str.length - 1;
+context math(context)
+snippet sum "Sumatorio" A
+\sum_{${1:j=1}}^n $0
+endsnippet
 
-    while (true)
-    {
-        if (str[i] == ')') depth += 1;
-        if (str[i] == '(') depth -= 1;
-        if (depth == 0) break;
-        i -= 1;
-    }
-
-    let results = str.slice(0, i) + "\\frac{" + str.slice(i+1, -1) + "}";
-    results += "{$1}$0";
-    rv = results;
-``
+context math(context)
+snippet isum "Sumatorio infinito" A
+\sum_{${1:j=1}}^\infty $0
 endsnippet
 
 
+
+
+
+# Paréntesis, llaves, etc
+
+context math(context)
+snippet ( "Paréntesis de tamaño variable" wA
+\left( $1 \right) $0
+endsnippet
+
+context math(context)
+snippet [ "Corchete de tamaño variable" wA
+\left[ $1 \right] $0
+endsnippet
+
+context math(context)
+snippet { "Llave de tamaño variable" wA
+\left{ $1 \right} $0
+endsnippet
+
+
+
+
+
+# Opciones comunes
+
+context not_math(context)
+snippet ff "Función presentada" wA
+
+\begin{align*}
+    ${1:f} : ${2:\mathbb{R\}} & \to ${3:\mathbb{R\}} \\
+    ${4:x} & \mapsto ${1:f} \! \left( ${4:x} \right) = $5
+\end{align*}
+
+$0
+endsnippet
+
+context math(context)
+snippet ff "Función no presentada" wA
+${1:f} \! \left( ${2:x} \right) = $0
+endsnippet
+
+context math(context)
+snippet set "Inserta un conjunto" wA
+ 
+endsnippet
+
+context math(context)
+snippet txt "Inserta texto" wA
+\textnormal{$1} $0 
+endsnippet
 
 
 
@@ -272,14 +327,20 @@ snippet today "Insertar la fecha de hoy"
 ``
 endsnippet
 
-snippet bf "Pone el texto en modo negrita"
-\textbf{$1} $0
+snippet bf "Pone el texto en modo negrita" Aw
+\textbf{$1}$0
 endsnippet
 
-snippet ef "Pone el texto en modo énfasis"
-\emph{$1} $0
+snippet if "Pone el texto en modo énfasis" Aw
+\emph{$1}$0
 endsnippet
 
 snippet " "Introduce unas dobles comillas" A
 `` rv = "\`\`$1\'\'" `` $0
+endsnippet
+
+context list(context)
+snippet item "Insertar un nuevo item." Ab
+
+\item$0
 endsnippet
