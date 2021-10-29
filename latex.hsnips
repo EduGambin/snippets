@@ -190,10 +190,18 @@ snippet proof "Inserta una nueva demostración" b
 $0
 endsnippet
 
+snippet img "Inserta una figura" b
+\begin{figure}[hbtp]
+    \centering
+    \includegraphics[scale=$1]{$2}
+    \caption{$3}
+    \label{fig:$4}
+\end{figure}
+endsnippet
 
-
-
-
+snippet ref "Inserta una referecia" b
+    \ref{$1}
+endsnippet
 ####################################################################################################
 #                                                                                                  #
 #                                           MATEMÁTICAS                                            #
@@ -204,12 +212,41 @@ snippet MM "Inserta una ecuación presentada" A
 \[ $1 \] $0
 endsnippet
 
-snippet mm "Inserta ecuación en línea" A
+snippet mm "Inserta una ecuación en una linea" A
 \( $1 \) $0
+endsnippet
+
+snippet aMM "Inserta una ecuación multilinea" Aw
+\begin{gather*}
+    $1 \\\\
+    $2
+\end{gather*}
 endsnippet
 
 snippet inn "Inserta un símbolo de pertenencia" Ai
 \in
+endsnippet 
+
+snippet exx "Inserta un símbolo de existencia" Ai
+\exists
+endsnippet
+
+snippet faa "Inserta un símbolo de existencia" Ai
+\forall
+endsnippet
+
+snippet mtx "Inserta texto en math mode" Ai
+\text{$1}
+endsnippet
+
+snippet m() "Inserta paréntesis" Ai
+\left( 
+    $1 
+\right)
+endsnippet
+
+snippet rarrow "Inserta flecha hacia la derecha" Ai
+\rightarrow
 endsnippet
 
 snippet RR "Inserta el conjunto de los números reales" Ai
@@ -230,6 +267,10 @@ endsnippet
 
 snippet `((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/` "Fraction no ()" A
 \frac{``rv = m[1]``}{$1}$0
+endsnippet
+
+snippet `([A-Za-z]+)_` "Subindices" A
+``rv = m[1]``_{$1}
 endsnippet
 
 snippet `^.*\)/` "Fraction with ()" A
@@ -283,3 +324,5 @@ endsnippet
 snippet " "Introduce unas dobles comillas" A
 `` rv = "\`\`$1\'\'" `` $0
 endsnippet
+
+
