@@ -497,7 +497,7 @@ endsnippet
 
 context math(context)
 snippet == "Igual" iA
-&= $1 \\\\
+ &= $1 \\\\
 endsnippet
 
 context math(context)
@@ -530,6 +530,10 @@ endsnippet
 
 snippet ee "Texto en énfasis" Aw
 \emph{$1}
+endsnippet
+
+snippet tt "Texto en monoespaciado" Aw
+\texttt{$1}
 endsnippet
 
 snippet "" "Dobles comillas" Aw
