@@ -201,16 +201,16 @@ endsnippet
 
 context !math(context)
 snippet aMM "Ecuación presentada y alineada" A
-\begin{align*}
+\begin{align}
 	$0
-\end{align*}
+\end{align}
 endsnippet
 
 context !math(context)
 snippet mMM "Ecuación presentada y multilínea" A
-\begin{multline*}
+\begin{multline}
 	$0
-\end{multline*}
+\end{multline}
 endsnippet
 
 
@@ -275,7 +275,7 @@ snippet ** "Multiplicador" Ai
 endsnippet
 
 context math(context)
-snippet \\ "Diferencia de conjuntos" Ai
+snippet -- "Diferencia de conjuntos" Ai
  \setminus 
 endsnippet
 
@@ -292,6 +292,16 @@ endsnippet
 context math(context)
 snippet nn "Intersección" Ai
  \cap 
+endsnippet
+
+context math(context)
+snippet lor "Or lógico" Ai
+ \lor 
+endsnippet
+
+context math(context)
+snippet land "And lógico" Ai
+ \land 
 endsnippet
 
 
@@ -420,6 +430,11 @@ snippet (( "Paréntesis de tamaño variable" wA
 \left( $1 \right)
 endsnippet
 
+context !math(context)
+snippet (( "Paréntesis en el texto" wA
+($1)
+endsnippet
+
 context math(context)
 snippet [[ "Corchete de tamaño variable" wA
 \left[ $1 \right]
@@ -451,7 +466,7 @@ snippet ff "Función presentada" wA
 endsnippet
 
 context math(context)
-snippet `(.+)\(` "Función no presentada" wA
+snippet `(\S+)\(` "Función no presentada" wA
 ``rv = m[1]`` \! \left( ${2:x} \right)
 endsnippet
 
@@ -519,4 +534,8 @@ endsnippet
 
 snippet "" "Dobles comillas" Aw
 `` rv = "\`\`$1\'\'" ``
+endsnippet
+
+snippet __ "Barra baja" Ai
+\_
 endsnippet
