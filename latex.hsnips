@@ -86,19 +86,19 @@ endsnippet
 snippet enum "Enumerado" b
 \begin{enumerate}
 	\item $0
-end{enumerate}
+\end{enumerate}
 endsnippet
 
 snippet item "Lista" b
 \begin{itemize}
 	\item $0
-end{itemize}
+\end{itemize}
 endsnippet
 
 snippet desc "Descripción" b
 \begin{description}
 	\item[$1] $0
-end{description}
+\end{description}
 endsnippet
 
 snippet def "Definición" b
@@ -152,13 +152,13 @@ endsnippet
 snippet exer "Ejercicio" b
 \begin{exercise}
 	$0
-end{exercise}
+\end{exercise}
 endsnippet
 
 snippet exam "Ejemplo" b
 \begin{example}
 	$0
-end{example}
+\end{example}
 endsnippet
 
 snippet chap "Capítulo" b
