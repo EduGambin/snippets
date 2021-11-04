@@ -29,15 +29,11 @@ snippet template "Nuevo documento utilizando las opciones habituales" b
 \documentclass[spanish]{${1:article}}
 
 % Preámbulo de latex.
-
 \usepackage[a4paper, margin=2.5cm]{geometry}
 	\setlength{\parindent}{0cm}
 	\setlength{\parskip}{\bigskipamount}
-
 \usepackage{tcolorbox}
-
 \usepackage{amsmath}
-
 \usepackage{amsthm}
 	\theoremstyle{definition}
 		\newtheorem{definition}{Definición}[$2]
@@ -47,12 +43,20 @@ snippet template "Nuevo documento utilizando las opciones habituales" b
 		\newtheorem{proposition}{Proposición}[$2]
 		\newtheorem{lemma}{Lema}[$2]
 		\newtheorem{corollary}{Corolario}[$2]
-
 \usepackage{amsfonts}
-
 \usepackage{babel}
+	\decimalpoint
+\usepackage{enumitem}
+\usepackage{hyperref}
 
-\date{${3:``var today = new Date(); rv = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();``}} % Dejar vacío si no se quiere poner la fecha.
+% Fuentes de texto.
+\usepackage{mathpazo}
+\usepackage{helvet}
+\usepackage{courier}
+
+% Opciones del documento.
+\date{${3:``var today = new Date(); rv = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();``}}
+\renewcommand\labelitemi{--}
 
 % Cuerpo del documento.
 
