@@ -169,12 +169,12 @@ snippet chap "Capítulo" b
 $0
 endsnippet
 
-snippet sect "Sección" b
+snippet sect "Sección" bw
 \section{$1}
 $0
 endsnippet
 
-snippet sect "Subsección" b
+snippet ssect "Subsección" b
 \subsection{$1}
 $0
 endsnippet
@@ -198,7 +198,7 @@ snippet mm "Ecuación" A
 endsnippet
 
 context !math(context)
-snippet MM "Ecuación presentada" Ab
+snippet MM "Ecuación presentada" Abw
 \[
 	$1
 \]
@@ -207,16 +207,18 @@ endsnippet
 
 context !math(context)
 snippet aMM "Ecuación presentada y alineada" Ab
-\begin{align}
+\begin{align*}
 	$0
-\end{align}
+\end{align*}
+
 endsnippet
 
 context !math(context)
 snippet mMM "Ecuación presentada y multilínea" Ab
-\begin{multline}
+\begin{multline*}
 	$0
-\end{multline}
+\end{multline*}
+
 endsnippet
 
 
@@ -281,8 +283,28 @@ snippet ** "Multiplicador" Ai
 endsnippet
 
 context math(context)
-snippet -- "Diferencia de conjuntos" Ai
+snippet -- "Menos" Ai
+ - 
+endsnippet
+
+context math(context)
+snippet ++ "Mas" Ai
+ + 
+endsnippet
+
+context math(context)
+snippet /- "Diferencia de conjuntos" Ai
  \setminus 
+endsnippet
+
+context math(context)
+snippet << "Menor que" Ai
+ < 
+endsnippet
+
+context math(context)
+snippet >> "Mayor que" Ai
+ > 
 endsnippet
 
 context math(context)
@@ -308,6 +330,11 @@ endsnippet
 context math(context)
 snippet land "And lógico" Ai
  \land 
+endsnippet
+
+context math(context)
+snippet +- "Mas menos" Ai
+ \pm 
 endsnippet
 
 
@@ -359,7 +386,7 @@ endsnippet
 
 context math(context)
 snippet // "Fracción simple" A
-\frac{$1}{$2}
+\frac{ $1 }{ $2 }
 endsnippet
 
 context math(context)
@@ -374,13 +401,8 @@ endsnippet
 # Símbolos
 
 context math(context)
-snippet srs "Mini-muestra aleatoria simple" A
-\vec{x} = \left( x_1, \dots, x_n \right)
-endsnippet
-
-context math(context)
-snippet SRS "Muestra aleatoria simple" A
-\vec{X} = \left( X_1, \dots, X_n \right)
+snippet srs "Muestra aleatoria simple" A
+\vec{${1:X}} = \left( ${1:X}_1, \dots, ${1:X}_n \right)
 endsnippet
 
 context math(context)
@@ -438,6 +460,16 @@ snippet iNN "Intersección grande infinita" A
 \bigcap_{${1:j=1}}^\infty 
 endsnippet
 
+context math(context)
+snippet aa "Alfa" A
+\alpha
+endsnippet
+
+context math(context)
+snippet the "Theta" A
+\theta
+endsnippet
+
 
 
 
@@ -493,7 +525,7 @@ endsnippet
 
 context math(context)
 snippet `(\S+)\(` "Función no presentada" wA
-``rv = m[1]`` \! \left( ${2:x} \right)
+``rv = m[1]`` \! \left( $1 \right)
 endsnippet
 
 context math(context)
