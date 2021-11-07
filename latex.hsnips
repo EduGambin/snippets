@@ -164,6 +164,19 @@ snippet exam "Ejemplo" b
 \end{example}
 endsnippet
 
+snippet proof "Demostración" b
+\begin{proof}
+	$0
+\end{proof}
+endsnippet
+
+snippet noproof "No demostración" b
+\begin{proof}
+	No es materia de examen.
+\end{proof}
+
+endsnippet
+
 snippet chap "Capítulo" b
 \chapter{$1}
 $0
@@ -337,6 +350,31 @@ snippet +- "Mas menos" Ai
  \pm 
 endsnippet
 
+context math(context)
+snippet xx "Times" Ai
+ \times 
+endsnippet
+
+context math(context)
+snippet mid "Tal que" Ai
+ \mid 
+endsnippet
+
+context math(context)
+snippet fpar "Parcial de" Ai
+\fpar{ $1 } 
+endsnippet
+
+context math(context)
+snippet log "Logaritmo de" Ai
+\log 
+endsnippet
+
+context math(context)
+snippet exp "Exponencial de" Ai
+\exp 
+endsnippet
+
 
 
 
@@ -389,10 +427,6 @@ snippet // "Fracción simple" A
 \frac{ $1 }{ $2 }
 endsnippet
 
-context math(context)
-snippet `\\left\( (.+) \\right\)\/\/` "Fracción con paréntesis" Ai
-\frac{``rv = m[1] ``}{$1}
-endsnippet
 
 
 
@@ -427,7 +461,7 @@ endsnippet
 
 context math(context)
 snippet int "Sumatorio" A
-\int_{${1:a}}^{${2:b}} 
+\int_$1 $2 \textnormal{d}$3
 endsnippet
 
 context math(context)
@@ -508,6 +542,21 @@ snippet vec "Vector" wA
 \vec{$1}
 endsnippet
 
+context math(context)
+snippet esp "Esperanza" wA
+\esp{ $1 }
+endsnippet
+
+context math(context)
+snippet var "Varianza" wA
+\var{ $1 }
+endsnippet
+
+context math(context)
+snippet hat "Varianza" wA
+\hat{ $1 }
+endsnippet
+
 
 
 
@@ -559,6 +608,11 @@ snippet == "Igual" iA
 endsnippet
 
 context math(context)
+snippet ,, "Coma" iA
+, 
+endsnippet
+
+context math(context)
 snippet &= "Igual en un entorno multilinea" iA
 &= $1 \\\\
 
@@ -588,8 +642,14 @@ endsnippet
 
 ########################################### OTRAS COSAS ############################################
 
+context !math(context)
 snippet bb "Texo en negrita" Aw
 \textbf{$1}
+endsnippet
+
+context math(context)
+snippet bb "Texo en negrita" Aw
+\boldsymbol{ $1 }
 endsnippet
 
 snippet ee "Texto en énfasis" Aw
