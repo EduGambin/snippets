@@ -92,6 +92,12 @@ snippet enum "Enumerado" b
 \end{enumerate}
 endsnippet
 
+snippet lenum "Enumerado con letras" b
+\begin{enumerate}[label=\textnormal{\alph*)}]
+	\item $0
+\end{enumerate}
+endsnippet
+
 snippet item "Lista" b
 \begin{itemize}
 	\item $0
@@ -614,7 +620,7 @@ endsnippet
 
 context math(context)
 snippet &= "Igual en un entorno multilinea" iA
-&= $1 \\\\
+ &= $1 \\\\
 
 endsnippet
 
