@@ -510,6 +510,11 @@ snippet the "Theta" A
 \theta
 endsnippet
 
+context math(context)
+snippet The "Theta grande" A
+\Theta
+endsnippet
+
 
 
 
