@@ -515,6 +515,21 @@ snippet The "Theta grande" A
 \Theta
 endsnippet
 
+context math(context)
+snippet lam "Lambda" A
+\lambda
+endsnippet
+
+context math(context)
+snippet Lam "Lambda grande" A
+\Lambda
+endsnippet
+
+context math(context)
+snippet dd "delta" A
+\delta
+endsnippet
+
 
 
 
@@ -590,7 +605,7 @@ endsnippet
 
 context math(context)
 snippet set "Inserta un conjunto" wA
-${1:A} = \left\{ ${2:x} \in ${3:\mathbb{R}} : $4 \right\\}
+$1 = \left\{ $2 \in $3 \mid $4 \right\\}
 endsnippet
 
 context math(context)
@@ -631,7 +646,7 @@ endsnippet
 
 context math(context)
 snippet != "Distinto" iA
-\neq
+ \neq 
 endsnippet
 
 context math(context)
