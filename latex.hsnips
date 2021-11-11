@@ -302,7 +302,7 @@ snippet ** "Multiplicador" Ai
 endsnippet
 
 context math(context)
-snippet -- "Menos" Ai
+snippet ` ?--` "Menos" Ai
  - 
 endsnippet
 
@@ -584,6 +584,11 @@ snippet var "Varianza" wA
 endsnippet
 
 context math(context)
+snippet sop "Soporte" wA
+\sop 
+endsnippet
+
+context math(context)
 snippet hat "Varianza" wA
 \hat{ $1 }
 endsnippet
@@ -641,6 +646,11 @@ endsnippet
 context math(context)
 snippet ,, "Coma" iA
 , 
+endsnippet
+
+context math(context)
+snippet :: "Dos puntos" iA
+ : 
 endsnippet
 
 context math(context)
