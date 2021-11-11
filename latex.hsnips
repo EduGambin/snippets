@@ -683,18 +683,22 @@ snippet bb "Texo en negrita" Aw
 \boldsymbol{ $1 }
 endsnippet
 
+context !math(context)
 snippet ee "Texto en énfasis" Aw
 \emph{$1}
 endsnippet
 
+context !math(context)
 snippet tt "Texto en monoespaciado" Aw
 \texttt{$1}
 endsnippet
 
+context !math(context)
 snippet "" "Dobles comillas" Aw
 `` rv = "\`\`$1\'\'" ``
 endsnippet
 
+context !math(context)
 snippet __ "Barra baja" Ai
 \_
 endsnippet
