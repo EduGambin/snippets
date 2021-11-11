@@ -530,6 +530,11 @@ snippet dd "delta" A
 \delta
 endsnippet
 
+context math(context)
+snippet inf "infinito" A
+\infty
+endsnippet
+
 
 
 
@@ -620,12 +625,12 @@ endsnippet
 
 context math(context)
 snippet me "Inserta una potencia" iA
-^{$1}
+^{ $1 }
 endsnippet
 
 context math(context)
 snippet __ "Subíndice" iA
-_{$1}
+_{ $1 }
 endsnippet
 
 context math(context)
