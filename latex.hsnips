@@ -128,7 +128,7 @@ endsnippet
 
 snippet nthm "Teorema con nombre" b
 \begin{tcolorbox}
-	\begin{theorem}[$1]
+	\begin{theorem}[$1] \label{thm:`` rv = t[0].toLowerCase().replace(' ', '-') ``\}
 		$0
 	\end{theorem}
 \end{tcolorbox}
@@ -422,6 +422,11 @@ snippet empty "Conjunto vacío" Ai
 \emptyset
 endsnippet
 
+context math(context)
+snippet inf "infinito" A
+\infty
+endsnippet
+
 
 
 
@@ -500,39 +505,45 @@ snippet iNN "Intersección grande infinita" A
 \bigcap_{${1:j=1}}^\infty 
 endsnippet
 
+
+
+
+
+# Grecia y su puta madre.
+
 context math(context)
 snippet aa "Alfa" A
 \alpha
 endsnippet
 
 context math(context)
-snippet the "Theta" A
-\theta
+snippet Aa "Alfa grande" A
+\Alpha
 endsnippet
 
 context math(context)
-snippet The "Theta grande" A
-\Theta
-endsnippet
-
-context math(context)
-snippet lam "Lambda" A
-\lambda
-endsnippet
-
-context math(context)
-snippet Lam "Lambda grande" A
-\Lambda
-endsnippet
-
-context math(context)
-snippet dd "delta" A
+snippet dd "Delta" A
 \delta
 endsnippet
 
 context math(context)
-snippet inf "infinito" A
-\infty
+snippet tt "Theta" A
+\theta
+endsnippet
+
+context math(context)
+snippet Tt "Theta grande" A
+\Theta
+endsnippet
+
+context math(context)
+snippet ll "Lambda" A
+\lambda
+endsnippet
+
+context math(context)
+snippet Ll "Lambda grande" A
+\Lambda
 endsnippet
 
 
@@ -665,7 +676,7 @@ snippet != "Distinto" iA
 endsnippet
 
 context math(context)
-snippet pmat "Matriz" iA
+snippet mat "Matriz" iA
 \begin{pmatrix}
 	$1
 \end{pmatrix}
